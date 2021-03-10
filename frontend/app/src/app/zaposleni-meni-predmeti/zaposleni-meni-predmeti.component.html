@@ -1,0 +1,122 @@
+<div class="row">
+    <div class="col-sm-1">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+            <a class="nav-link" routerLink="/zaposleniMeni">Profil</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active">Predmeti</a>
+            </li>
+             <li class="nav-item">
+            <a class="nav-link" routerLink="/zaposleniMeniVesti">Vesti</a>
+            </li>
+         </ul>
+    </div>
+    <div class="col-sm-11">
+        <div class="linija">
+            <br>
+            <div class="col-sm-12">
+                <button (click)='odjava()'>Odjava</button>
+            </div>
+            <br>
+            <table>
+                <tr>
+                    <td>Izaberite predmet: </td>
+                    <td>
+                        <select name='predmetIzabranSifra' [(ngModel)]='predmetIzabranSifra' (change)='postaviPredmet()'>
+                            <option *ngFor='let p of predmeti' value='{{ p.sifra }}'>{{ p.ime }}</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>    
+            <br>
+            <ul *ngIf='predmetIzabran != null' class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active">O predmetu</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/zaposleniMeniPredmetPredavanja">Predavanja</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/zaposleniMeniPredmetVezbe">Vežbe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/zaposleniMeniPredmetIspitna">Ispitna pitanja</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/zaposleniMeniPredmetLaboratorija">Laboratorija</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/zaposleniMeniPredmetDomaci">Domaći</a>
+                </li>
+            </ul>
+            <br>
+            <form *ngIf='predmetIzabran != null'>
+                <table>
+                    <tr>
+                        <td>Tip:</td>
+                        <td>
+                            <select name='tip' [(ngModel)]='tip'>
+                                <option value='obavezan'>obavezan</option>
+                                <option value='izborni'>izborni</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fond predavanja:</td>
+                        <td>
+                            <input type='number' name='fondPredavanja' [(ngModel)]='fondPredavanja'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fond vežbi:</td>
+                        <td>
+                            <input type='text' name='fondVezbe' [(ngModel)]='fondVezbe'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ESPB:</td>
+                        <td>
+                            <input type='number' name='espb' [(ngModel)]='espb'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cilj:</td>
+                        <td>
+                            <textarea name='cilj' rows="3" cols="30" [(ngModel)]='cilj'></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Termin predavanja:</td>
+                        <td>
+                            <input type='text' name='terminPredavanja' [(ngModel)]='terminPredavanja'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Termin vežbi:</td>
+                        <td>
+                            <input type='text' name='terminVezbe' [(ngModel)]='terminVezbe'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Polaganje:</td>
+                        <td>
+                            <input type='text' name='polaganje' [(ngModel)]='polaganje'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Komentar:</td>
+                        <td>
+                            <input type='text' name='komentar' [(ngModel)]='komentar'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>
+                           <button (click)='azurirajPredmet()'>Azuriraj</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>    

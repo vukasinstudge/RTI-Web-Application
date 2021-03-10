@@ -1,0 +1,14 @@
+<div *ngIf='korisnik != null' class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+</div>
+<br>
+<h5><b>Master studije:</b></h5>
+<table>
+    <tr *ngFor='let p of masterPredmeti'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>

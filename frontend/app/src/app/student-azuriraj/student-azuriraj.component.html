@@ -1,0 +1,66 @@
+<br>
+  <div class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+  </div>
+  <br>
+
+<form>
+    <h5><b>Izabrani korisnik:</b></h5>
+    <table>
+        <tr>
+            <td>Korisničko ime:</td>
+            <td>
+                <input type='text' name='korime' [(ngModel)]='korime'>
+            </td>
+        </tr>
+        <tr>
+            <td>Lozinka:</td>
+            <td>
+                <input type='password' name='lozinka' [(ngModel)]='lozinka'>
+            </td>
+        </tr>
+        <tr>
+            <td>Indeks:</td>
+            <td>
+                <input type='text' name='indeks' [(ngModel)]='indeks'>
+            </td>
+        </tr>
+        <tr>
+            <td>Tip studija:</td>
+            <td>
+                <select name='tipStudija' [(ngModel)]='tipStudija'>
+                    <option value='d'>d</option>
+                    <option value='m'>m</option>
+                    <option value='p'>p</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Ime:</td>
+            <td>
+                <input type='text' name='ime' [(ngModel)]='ime'>
+            </td>
+        </tr>
+        <tr>
+            <td>Prezime:</td>
+            <td>
+                <input type='text' name='prezime' [(ngModel)]='prezime'>
+            </td>
+        </tr>
+        <tr>
+            <td>Status:</td>
+            <td>
+                <select name='status' [(ngModel)]='status'>
+                    <option value='aktivan'>aktivan</option>
+                    <option value='neaktivan'>neaktivan</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2'>
+               <button (click)='azuriraj()'>Azuriraj</button>
+            </td>
+        </tr>
+    </table>
+</form>
+

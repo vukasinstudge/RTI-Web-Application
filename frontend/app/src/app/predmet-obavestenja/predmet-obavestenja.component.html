@@ -1,0 +1,67 @@
+<h2 *ngIf='predmetDetalji != null'><b>{{ predmetDetalji.ime }}</b></h2>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active">Obavestenja</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/predmetInformacije">Informacije</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/predmetPredavanja">Predavanja</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/predmetVezbe">Vežbe</a>
+    </li>
+    <li class="nav-item" *ngIf='vidljivoIspitna == true'>
+        <a class="nav-link" routerLink="/predmetIspitna">Ispitna pitanja</a>
+    </li>
+    <li class="nav-item" *ngIf='vidljivoLaboratorija == true'>
+        <a class="nav-link" routerLink="/predmetLaboratorija">Laboratorija</a>
+    </li>
+    <li class="nav-item" *ngIf='vidljivoDomaci == true'>
+        <a class="nav-link" routerLink="/predmetDomaci">Domaći</a>
+    </li>
+  </ul>
+
+  <br>
+  <div class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+  </div>
+  <br>
+
+  <br>
+  <h5><b>Obavestenja:</b></h5>
+  <br>
+  <div *ngIf='predmetDetalji != null'>
+    <table *ngFor='let o of predmetDetalji.obavestenja'>
+        <tr>
+          <td>
+              <span *ngIf='convert(o.datum) >= sevenDaysAgo' class='red'>{{ o.naslov }}</span>
+              <span *ngIf='convert(o.datum) < sevenDaysAgo'>{{ o.naslov }}</span>
+          </td>
+        </tr>
+        <tr>
+            <td>
+              &nbsp;{{ o.sadrzaj }}
+            </td>
+        </tr>
+        <tr>
+          <table>
+            <tr *ngFor='let d of o.dodaci'>
+              <td>&nbsp;&nbsp;&nbsp;</td>
+              <td><b>{{ d.ime }} {{ d.tip }}</b> {{ d.kb }}KB, </td>
+              <td>{{ d.datum }} {{ d.dodao }}</td>
+              <td>
+                  <button (click)="preuzmi(d)" type="button">Preuzmi</button>
+              </td>
+            </tr>
+          </table>
+        </tr>
+        <tr>
+          <td>
+              {{ o.napisao }}, {{ o.datum }} <br><br>
+          </td>
+        </tr>
+    </table>
+  </div>

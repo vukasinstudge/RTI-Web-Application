@@ -1,0 +1,12 @@
+<div *ngIf='korisnik != null' class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+  </div>
+  <br>
+
+<h5><b>Lista zaposlenih: </b></h5>
+<table>
+    <tr *ngFor="let z of zaposleni">
+        <td>{{ z.ime }} {{ z.prezime }}, {{ z.zvanje }}</td>
+        <td><button (click)="zaposleniDetalji(z)">Detalji</button></td>
+    </tr>
+</table>

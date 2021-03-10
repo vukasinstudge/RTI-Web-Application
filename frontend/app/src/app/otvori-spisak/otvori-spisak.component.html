@@ -1,0 +1,44 @@
+<div class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+</div>
+<br>
+<h5><b>Novi spisak: </b></h5>
+        <form>
+            <table>
+                <tr>
+                    <td>Naziv:</td>
+                    <td>
+                        <input type='text' name='naziv' [(ngModel)]='naziv'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Termin:</td>
+                    <td>
+                        <input type='text' name='termin' [(ngModel)]='termin'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Mesto:</td>
+                    <td>
+                        <input type='text' name='mesto' [(ngModel)]='mesto'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Limit:</td>
+                    <td>
+                        <input type='number' name='limit' [(ngModel)]='limit'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Otvoreno do:</td>
+                    <td>
+                        <input type='date' name='datum' [(ngModel)]='datum'>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan='2'>
+                       <button (click)='otvoriSpisak()'>Otvori spisak</button>
+                    </td>
+                </tr>
+            </table>
+        </form>

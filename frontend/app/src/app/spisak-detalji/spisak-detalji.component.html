@@ -1,0 +1,27 @@
+<br>
+  <div class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+  </div>
+  <br>
+
+<form>
+    <table cellpadding="3">
+        <tr>
+            <h6><b>Spisak {{ spisak.naziv }}</b></h6>
+        </tr>
+        <tr>
+            <td>Prijavljeni: </td>
+        </tr>
+        <tr *ngFor='let student of spisak.studenti'>
+            <td>{{ student.korime }}: </td>
+            <td *ngIf='student.rad == null'>Nema fajla</td>
+            <td *ngIf='student.rad != null'><b>{{ student.rad.ime }} {{ student.rad.tip }}</b> {{ student.rad.kb }}KB, </td>
+            <td *ngIf='student.rad != null'>{{ student.rad.datum }} {{ student.rad.dodao }}</td>
+            <td *ngIf='student.rad != null'>
+                <button (click)="preuzmi(student.rad)" type="button">Preuzmi</button>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <button (click)="nazad()" type="button">Nazad</button>           
+</form>

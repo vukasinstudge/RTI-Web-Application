@@ -1,0 +1,44 @@
+  <div *ngIf='korisnik != null' class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+  </div>
+  <br>
+
+<div class="row">
+    <div class="col-sm-12">
+        <table>
+            <tr>
+                <td>
+                    <img src="../../assets/images/{{trenutni.slika}}" height="100px" width="100px">
+                </td>
+            </tr>
+            <tr>
+                <td>{{ trenutni.ime }} {{ trenutni.prezime }}, {{ trenutni.zvanje }}</td>
+            </tr>
+            <tr>
+                <td>E-mail: {{ trenutni.korime }}@etf.bg.ac.rs</td>
+            </tr>
+            <tr>
+                <td>Adresa: {{ trenutni.adresa }}</td>
+            </tr>
+            <tr>
+                <td>Kontakt telefon: {{ trenutni.telefon }}</td>
+            </tr>
+            <tr>
+                <td>Sajt: {{ trenutni.sajt }}</td>
+            </tr>
+            <tr>
+                <td>Biografija: {{ trenutni.biografija }}</td>
+            </tr>
+            <tr>
+                <td>Kabinet: {{ trenutni.brojKabineta }}</td>
+            </tr>
+            <hr>
+            <tr *ngIf='trenutni.zvanje == "asistent" || trenutni.zvanje == "redovni profesor" || trenutni.zvanje == "vanredni profesor" || trenutni.zvanje == "docent"'>
+                Predmeti:
+            </tr>
+            <tr *ngFor='let p of predmeti'>
+                <td>{{ p.ime }}</td>
+            </tr>
+        </table>
+    </div>
+</div>

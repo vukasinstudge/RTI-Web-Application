@@ -1,0 +1,45 @@
+<div *ngIf='korisnik != null' class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+</div>
+<br>
+<h5><b>Obaveštenja: </b></h5>
+<br>
+<table>
+    <tr *ngFor='let k of kategorije'>
+        <td>
+            <br>
+            <b>Kategorija: {{ k.ime }}</b>
+            <br>
+            <table *ngFor='let o of k.obavestenja'>
+                <br>
+                <tr *ngIf='zaPrikaz(o)'>
+                    <td>
+                        Naslov:
+                    </td>
+                    <td>
+                        {{ o.naslov }}
+                    </td>
+                </tr>
+                <tr *ngIf='zaPrikaz(o)'>
+                    <td>
+                        Datum:
+                    </td>
+                    <td>
+                        {{ o.datum }}
+                    </td>
+                </tr>
+                <tr *ngIf='zaPrikaz(o)'>
+                    <td>
+                        Sadržaj:
+                    </td>
+                    <td>
+                        <i>
+                            {{ o.sadrzaj }}
+                        </i>
+                    </td>
+                </tr>
+            </table>
+            <br>
+        </td>
+    </tr>
+</table>

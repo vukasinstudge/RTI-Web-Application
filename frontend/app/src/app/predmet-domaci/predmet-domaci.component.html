@@ -1,0 +1,102 @@
+<h2 *ngIf='predmetDetalji != null'><b>{{ predmetDetalji.ime }}</b></h2>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/predmetObavestenja">Obavestenja</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/predmetInformacije">Informacije</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/predmetPredavanja">Predavanja</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/predmetVezbe">Vežbe</a>
+    </li>
+    <li class="nav-item" *ngIf='vidljivoIspitna == true'>
+      <a class="nav-link" routerLink="/predmetIspitna">Ispitna pitanja</a>
+    </li>
+    <li class="nav-item" *ngIf='vidljivoLaboratorija == true'>
+        <a class="nav-link" routerLink="/predmetLaboratorija">Laboratorija</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active">Domaći</a>
+    </li>
+  </ul>
+
+  <br>
+  <div class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+  </div>
+  <br>
+
+  <br>
+  <h5><b>Domaći zadaci:</b></h5>
+  <br>
+  <div *ngIf='predmetDetalji != null'>
+    <table *ngFor='let d of predmetDetalji.domaci.domaciZadaci'>
+      <tr>
+          <td><b>Opis zadatka i ostale informacije: </b></td>
+          <td>&nbsp;&nbsp;{{ d.informacije }}</td>
+      </tr>
+      <tr>
+        <td><b>Materijali: </b></td>
+        <table>
+          <tr *ngFor='let r of d.domaciMaterijal'>
+            <td><b>{{ r.ime }} {{ r.tip }}</b> {{ r.kb }}KB, </td>
+            <td>{{ r.datum }} {{ r.dodao }}</td>
+            <td>
+                <button (click)="preuzmi(r)" type="button">Preuzmi</button>
+            </td>
+          </tr>
+        </table>
+      </tr>
+      <hr>
+  </table>
+  <table>
+    <br>
+      <tr>
+        <h6><b>Otvoreni spiskovi: </b></h6>
+      </tr>
+      <tr *ngFor='let s of spiskovi'>
+        <table *ngIf='otvoren(s)' cellpadding="5">
+            <tr>
+                <td>Naziv: </td>
+                <td>{{ s.naziv }}</td>
+            </tr>
+            <tr>
+                <td>Termin: </td>
+                <td>{{ s.termin }}</td>
+            </tr>
+            <tr>
+                <td>Mesto: </td>
+                <td>{{ s.mesto }}</td>
+            </tr>
+            <tr>
+                <td>Otvoreno do: </td>
+                <td *ngIf='otvoren(s) == true'>{{ s.datum }}</td>
+                <td *ngIf='otvoren(s) == false'>Zatvoreno</td>
+            </tr>
+            <tr>
+                <td>Prijavljeno / Dozvoljeno:</td>
+                <td *ngIf='s.limit == 1000'>{{ s.studenti.length }} / Nema granice</td>
+                <td *ngIf='s.limit < 1000'>{{ s.studenti.length }} / {{ s.limit }}</td>
+            </tr>
+            <tr *ngIf='student != null'>
+              <td colspan="4">
+                  <div class="form-group">                    
+                      <input type="file" name="fajlZaUpload" (change)="promenaFajla($event)" #UploadFileInput>
+                  </div>
+                  <button (click)="priloziFajl()" type="button">Priloži fajl</button>
+              </td>
+          </tr>
+            <tr *ngIf='student != null'>
+                <td>
+                  <button (click)='prijaviSeNaSpisak(s)'>Prijavi se</button>
+                </td>
+            </tr>
+        </table>
+        <br>
+    </tr>
+  </table>
+  </div>

@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-sm-1">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+            <a class="nav-link" routerLink="/zaposleniMeni">Profil</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active">Predmeti</a>
+            </li>
+             <li class="nav-item">
+            <a class="nav-link" routerLink="/zaposleniMeniVesti">Vesti</a>
+            </li>
+         </ul>
+    </div>
+    <div class="col-sm-11">
+        <div class="linija">
+            <br>
+            <div class="col-sm-12">
+                <button (click)='odjava()'>Odjava</button>
+            </div>
+            <br>
+            <table>
+                <tr>
+                    <td>Izaberite predmet: </td>
+                    <td>
+                        <select name='predmetIzabranSifra' [(ngModel)]='predmetIzabranSifra' (change)='postaviPredmet()'>
+                            <option *ngFor='let p of predmeti' value='{{ p.sifra }}'>{{ p.ime }}</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>    
+            <br>
+            <ul *ngIf='predmetIzabran != null' class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/zaposleniMeniPredmeti">O predmetu</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/zaposleniMeniPredmetPredavanja">Predavanja</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/zaposleniMeniPredmetVezbe">Vežbe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active">Ispitna pitanja</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/zaposleniMeniPredmetLaboratorija">Laboratorija</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/zaposleniMeniPredmetDomaci">Domaći</a>
+                </li>
+            </ul>
+            <br>
+            <h6 *ngIf='vidljiva == true'><b>Ova stranica je vidljiva</b></h6>
+            <h6 *ngIf='vidljiva == false'><b>Ova stranica NIJE vidljiva</b></h6>
+            <button (click)='promeni()'>Promeni</button>
+            <br>
+            <br>
+            <h5><b>Rokovi:</b></h5>
+            <table>
+                <tr *ngFor='let p of predmetIzabran.ispitnaPitanja.rokovi'>
+                    <td><b>{{ p.ime }} {{ p.tip }}</b> {{ p.kb }}KB, </td>
+                    <td>{{ p.datum }} {{ p.dodao }}</td>
+                    <td>
+                        <button (click)="obrisiFajlRokovi(p)" type="button">Obrisi</button>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <h6><b>Novi fajl:</b></h6>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="form-group">                    
+                            <input type="file" name="fajlZaUpload" (change)="promenaFajla($event)" #UploadFileInput>
+                        </div>
+                        <button (click)="dodajFajlRokovi()" type="button">Dodaj</button>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <h5><b>Rešenja:</b></h5>
+            <table>
+                <tr *ngFor='let p of predmetIzabran.ispitnaPitanja.resenja'>
+                    <td><b>{{ p.ime }} {{ p.tip }}</b> {{ p.kb }}KB, </td>
+                    <td>{{ p.datum }} {{ p.dodao }}</td>
+                    <td>
+                        <button (click)="obrisiFajlResenja(p)" type="button">Obrisi</button>
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <h6><b>Novi fajl:</b></h6>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div class="form-group">                    
+                            <input type="file" name="fajlZaUpload" (change)="promenaFajla($event)" #UploadFileInput>
+                        </div>
+                        <button (click)="dodajFajlResenja()" type="button">Dodaj</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>    

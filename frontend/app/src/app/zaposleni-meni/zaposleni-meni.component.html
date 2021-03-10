@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-sm-1">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/zaposleniMeniPredmeti">Predmeti</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/zaposleniMeniVesti">Vesti</a>
+            </li>
+          </ul>
+    </div>
+    <div class="col-sm-11">
+        <div class="linija">
+            <br>
+            <div class="col-sm-12">
+                <button (click)='odjava()'>Odjava</button>
+            </div>
+            <br>
+            <h5><b>Profil</b></h5>
+                <form>
+                <table>
+                    <tr>
+                        <td>Ime:</td>
+                        <td>
+                            <input type='text' name='ime' [(ngModel)]='ime'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Prezime:</td>
+                        <td>
+                            <input type='text' name='prezime' [(ngModel)]='prezime'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Adresa:</td>
+                        <td>
+                            <input type='text' name='adresa' [(ngModel)]='adresa'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Telefon:</td>
+                        <td>
+                            <input type='text' name='telefon' [(ngModel)]='telefon'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sajt:</td>
+                        <td>
+                            <input type='text' name='sajt' [(ngModel)]='sajt'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Biografija:</td>
+                        <td>
+                            <textarea name='biografija' rows="3" cols="30" [(ngModel)]='biografija'></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Broj kabineta:</td>
+                        <td>
+                            <input type='number' name='brojKabineta' [(ngModel)]='brojKabineta'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>
+                            <button (click)='azuriraj()'>Izmeni</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+  

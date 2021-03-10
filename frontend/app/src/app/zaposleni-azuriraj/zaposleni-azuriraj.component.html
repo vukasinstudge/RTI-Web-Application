@@ -1,0 +1,93 @@
+<div class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+  </div>
+  <br>
+
+<h5><b>Izabrani zaposleni: </b></h5>
+        <form>
+            <table>
+                <tr>
+                    <td>Korisničko ime:</td>
+                    <td>
+                        <input type='text' name='korime' [(ngModel)]='korime'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lozinka:</td>
+                    <td>
+                        <input type='password' name='lozinka' [(ngModel)]='lozinka'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ime:</td>
+                    <td>
+                        <input type='text' name='ime' [(ngModel)]='ime'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Prezime:</td>
+                    <td>
+                        <input type='text' name='prezime' [(ngModel)]='prezime'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Adresa:</td>
+                    <td>
+                        <input type='text' name='adresa' [(ngModel)]='adresa'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Telefon:</td>
+                    <td>
+                        <input type='text' name='telefon' [(ngModel)]='telefon'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sajt:</td>
+                    <td>
+                        <input type='text' name='sajt' [(ngModel)]='sajt'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Biografija:</td>
+                    <td>
+                        <textarea name='biografija' rows="3" cols="30" [(ngModel)]='biografija'></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zvanje:</td>
+                    <td>
+                        <select name='zvanje' [(ngModel)]='zvanje'>
+                            <option value='redovni profesor'>redovni profesor</option>
+                            <option value='vanredni profesor'>vanredni profesor</option>
+                            <option value='docent'>docent</option>
+                            <option value='asistent'>asistent</option>
+                            <option value='saradnik u nastavi'>saradnik u nastavi</option>
+                            <option value='istraživač'>istraživač</option>
+                            <option value='laboratorijski inženjer'>laboratorijski inženjer</option>
+                            <option value='laboratorijski tehničar'>laboratorijski tehničar</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Broj kabineta:</td>
+                    <td>
+                        <input type='number' name='brojKabineta' [(ngModel)]='brojKabineta'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td>
+                        <select name='status' [(ngModel)]='status'>
+                            <option value='aktivan'>aktivan</option>
+                            <option value='neaktivan'>neaktivan</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan='2'>
+                       <button (click)='azuriraj()'>Azuriraj</button>
+                    </td>
+                </tr>
+            </table>
+        </form>

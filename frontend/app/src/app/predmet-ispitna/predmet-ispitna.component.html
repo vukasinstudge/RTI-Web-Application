@@ -1,0 +1,55 @@
+<h2 *ngIf='predmetDetalji != null'><b>{{ predmetDetalji.ime }}</b></h2>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/predmetObavestenja">Obavestenja</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/predmetInformacije">Informacije</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/predmetPredavanja">Predavanja</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/predmetVezbe">Vežbe</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active">Ispitna pitanja</a>
+    </li>
+    <li class="nav-item" *ngIf='vidljivoLaboratorija == true'>
+        <a class="nav-link" routerLink="/predmetLaboratorija">Laboratorija</a>
+    </li>
+    <li class="nav-item" *ngIf='vidljivoDomaci == true'>
+        <a class="nav-link" routerLink="/predmetDomaci">Domaći</a>
+    </li>
+  </ul>
+
+  <br>
+  <div class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+</div>
+<br>
+
+  <br>
+  <h5><b>Rokovi:</b></h5>
+  <table *ngIf='predmetDetalji != null'>
+    <tr *ngFor='let r of predmetDetalji.ispitnaPitanja.rokovi'>
+      <td><b>{{ r.ime }} {{ r.tip }}</b> {{ r.kb }}KB, </td>
+      <td>{{ r.datum }} {{ r.dodao }}</td>
+      <td>
+          <button (click)="preuzmi(r)" type="button">Preuzmi</button>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+  <h5><b>Rešenja:</b></h5>
+  <table *ngIf='predmetDetalji != null'>
+    <tr *ngFor='let r of predmetDetalji.ispitnaPitanja.resenja'>
+      <td><b>{{ r.ime }} {{ r.tip }}</b> {{ r.kb }}KB, </td>
+      <td>{{ r.datum }} {{ r.dodao }}</td>
+      <td>
+          <button (click)="preuzmi(r)" type="button">Preuzmi</button>
+      </td>
+    </tr>
+  </table>

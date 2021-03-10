@@ -1,0 +1,133 @@
+<div class="row">
+    <div class="col-sm-1">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/zaposleniMeni">Profil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/zaposleniMeniPredmeti">Predmeti</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active">Vesti</a>
+            </li>
+          </ul>
+    </div>
+    <div class="col-sm-11">
+        <div class="linija">
+            <br>
+            <div class="col-sm-12">
+                <button (click)='odjava()'>Odjava</button>
+            </div>
+            <br>
+            <h5><b>Novo obaveštenje:</b></h5>
+                <form>
+                <table cellpadding="5">
+                    <tr>
+                        <td>
+                            <table cellpadding="5">
+                                <tr> 
+                                    <td>Naslov vesti:</td>
+                                    <td>
+                                        <input type='text' name='naslov' [(ngModel)]='naslov'>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Datum:</td>
+                                    <td>
+                                        <input type='date' name='datum' [(ngModel)]='datum'>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sadržaj:</td>
+                                    <td>
+                                        <angular-editor name="sadrzaj" [placeholder]="'Unesi sadržaj..'" [(ngModel)]="sadrzaj"></angular-editor>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Predmet: </td>
+                                    <td>
+                                        <select name='predmetIzabranSifra' [(ngModel)]='predmetIzabranSifra'>
+                                            <option *ngFor='let p of predmeti' value='{{ p.sifra }}'>{{ p.ime }}</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <br>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    Dodaci:
+                                                    <div class="form-group">                    
+                                                        <input type="file" name="fajlZaUpload" (change)="promenaFajla($event)" #UploadFileInput>
+                                                    </div>
+                                                    <button (click)="dodajFajlObavestenje()" type="button">Dodaj</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <table>
+                                                    <tr *ngFor='let f of dodatiFajlovi'>
+                                                        <td>{{ f.ime }}</td>
+                                                    </tr>
+                                                </table>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <br>
+                                <tr>
+                                    <td>
+                                        <button (click)='unesiObavestenje()'>Unesi</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <br>
+                    <tr>
+                        <td><h5><b>Vaša obaveštenja: </b></h5></td>
+                    </tr>
+                    <br>
+                    <tr *ngFor='let o of obavestenja; index as i'>
+                        <td>
+                            <table cellpadding='10'>
+                                <tr>
+                                    <td>
+                                        <table>
+                                            <tr>
+                                                <td><input type="text" name="obavestenjaNaslov{{i}}" [(ngModel)]="obavestenjaNaslov[i]"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ obavestenjaDatum[i] }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ obavestenjaPredmet[i].ime }}</td>
+                                            </tr>
+                                        </table>                                       
+                                    </td>
+                                    <td><angular-editor name="obavestenjaSadrzaj{{i}}" [(ngModel)]="obavestenjaSadrzaj[i]"></angular-editor></td>
+                                    <td>
+                                        <table cellpadding='5'>
+                                            <tr *ngFor='let mat of o.dodaci'>
+                                                <td>{{ mat.ime }}</td>
+                                            </tr>
+                                        </table>
+                                        <hr>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button (click)='azurirajObavestenje(i)'>Azuriraj</button>
+                                        &nbsp;&nbsp;
+                                        <button (click)='obrisiObavestenje(i)'>Obrisi</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <br>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

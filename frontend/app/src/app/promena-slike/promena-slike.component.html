@@ -1,0 +1,20 @@
+  <div class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+  </div>
+  <br>
+
+<table>
+    <tr>
+        <h6><b>Izaberite novu sliku za {{ trenutniZaposleni.ime }} {{trenutniZaposleni.prezime}}:</b></h6>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <div class="form-group">                    
+                <input type="file" name="fajlZaUpload" (change)="promenaFajla($event)" #UploadFileInput>
+            </div>
+        </td>
+        <td>
+            <button (click)="promeniSliku()" type="button">Promeni sliku</button>
+        </td>
+    </tr>
+</table>

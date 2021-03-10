@@ -1,0 +1,93 @@
+<h2 *ngIf='predmetDetalji != null'><b>{{ predmetDetalji.ime }}</b></h2>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/predmetObavestenja">Obavestenja</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active">Informacije</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/predmetPredavanja">Predavanja</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/predmetVezbe">Vežbe</a>
+    </li>
+    <li class="nav-item" *ngIf='vidljivoIspitna == true'>
+        <a class="nav-link" routerLink="/predmetIspitna">Ispitna pitanja</a>
+    </li>
+    <li class="nav-item" *ngIf='vidljivoLaboratorija == true'>
+        <a class="nav-link" routerLink="/predmetLaboratorija">Laboratorija</a>
+    </li>
+    <li class="nav-item" *ngIf='vidljivoDomaci == true'>
+        <a class="nav-link" routerLink="/predmetDomaci">Domaći</a>
+    </li>
+  </ul>
+
+  <br>
+  <div class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+  </div>
+  <br>
+
+  <br>
+  <table *ngIf='predmetDetalji != null'>
+      <tr>
+          <td>Tip: </td><td>{{ predmetDetalji.tip }}</td>
+      </tr>
+      <tr>
+          <td>Semestar: </td><td>{{ predmetDetalji.semestar }}</td>
+      </tr>
+      <tr>
+          <td>Odsek: </td><td>{{ praviOdsek }}</td> 
+      </tr>
+      <tr>
+          <td>Šifra: </td><td>{{ pravaSifra }}</td>
+      </tr>
+      <br>
+      <tr>
+          <td>Fond časova</td> 
+      </tr>
+      <tr>
+          <td>&nbsp;&nbsp;Predavanja: </td><td>{{ predmetDetalji.fondPredavanja }}</td>
+      </tr>
+      <tr>
+          <td>&nbsp;&nbsp;Vežbe: </td><td>{{ predmetDetalji.fondVezbe }}</td>
+      </tr>
+      <br>
+      <tr>
+          <td>ESPB: </td><td>{{ predmetDetalji.espb }}</td>
+      </tr>
+      <tr>
+          <td>Cilj predmeta: </td><td>{{predmetDetalji.cilj}}</td>
+      </tr>
+      <tr>
+          <td>Termin predavanja: </td><td>{{ predmetDetalji.terminPredavanja }}</td>
+      </tr>
+      <tr>
+          <td>Termin vežbi: </td><td>{{ predmetDetalji.terminVezbe }}</td>
+      </tr>
+      <tr *ngIf='predmetDetalji.labovi.brojLabova > 0'>
+          <td>Predmet obuhvata laboratorijske vežbe</td>
+      </tr>
+      <tr *ngIf='predmetDetalji.polaganje != ""'>
+          <td>Polaganje: </td><td>{{ predmetDetalji.polaganje }}</td>
+      </tr>
+      <tr *ngIf='predmetDetalji.komentar != ""'>
+          <td>Dodatno: </td><td>{{ predmetDetalji.komentar }}</td>
+      </tr>
+      <hr>
+      <tr>
+          <td>Nastavnici: </td>
+      </tr>
+      <tr>
+          <td>
+            <table>
+                <tr *ngFor='let n of drzePredmetZaposleni'>
+                    <td>{{ n.ime }} {{ n.prezime }}, {{ n.zvanje }}</td>
+                    <td><button (click)="zaposleniDetalji(n)">Detalji</button></td>
+                </tr>
+            </table>
+        </td>
+      </tr>
+  </table>

@@ -1,0 +1,246 @@
+<div *ngIf='korisnik != null' class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+</div>
+<br>
+<h5><b>SI</b></h5>
+<h6><b>1. semestar</b></h6>
+<table *ngIf='si1 != null'>
+    <tr *ngFor='let p of si1; index as i'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>2. semestar</b></h6>
+<table *ngIf='si2 != null'>
+    <tr *ngFor='let p of si2'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>3. semestar</b></h6>
+<table *ngIf='si3 != null'>
+    <tr *ngFor='let p of si3'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>4. semestar</b></h6>
+<table *ngIf='si4 != null'>
+    <tr *ngFor='let p of si4'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>5. semestar</b></h6>
+<table *ngIf='si5 != null'>
+    <tr *ngFor='let p of si5'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>6. semestar</b></h6>
+<table *ngIf='si6 != null'>
+    <tr *ngFor='let p of si6'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>7. semestar</b></h6>
+<table *ngIf='si7 != null'>
+    <tr *ngFor='let p of si7'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>8. semestar</b></h6>
+<table *ngIf='si8 != null'>
+    <tr *ngFor='let p of si8'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h5><b>RTI</b></h5>
+<h6><b>1. semestar</b></h6>
+<table *ngIf='rti1 != null'>
+    <tr *ngFor='let p of rti1'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>2. semestar</b></h6>
+<table *ngIf='rti2 != null'>
+    <tr *ngFor='let p of rti2'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>3. semestar</b></h6>
+<table *ngIf='rti3 != null'>
+    <tr *ngFor='let p of rti3'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>4. semestar</b></h6>
+<table *ngIf='rti4 != null'>
+    <tr *ngFor='let p of rti4'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>5. semestar</b></h6>
+<table *ngIf='rti5 != null'>
+    <tr *ngFor='let p of rti5'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>6. semestar</b></h6>
+<table *ngIf='rti6 != null'>
+    <tr *ngFor='let p of rti6'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>7. semestar</b></h6>
+<table *ngIf='rti7 != null'>
+    <tr *ngFor='let p of rti7'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>8. semestar</b></h6>
+<table *ngIf='rti8 != null'>
+    <tr *ngFor='let p of rti8'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h5><b>Ostalo</b></h5>
+<h6><b>1. semestar</b></h6>
+<table *ngIf='ostalo1 != null'>
+    <tr *ngFor='let p of ostalo1'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>2. semestar</b></h6>
+<table *ngIf='ostalo2 != null'>
+    <tr *ngFor='let p of ostalo2'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>3. semestar</b></h6>
+<table *ngIf='ostalo3 != null'>
+    <tr *ngFor='let p of ostalo3'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>4. semestar</b></h6>
+<table *ngIf='ostalo4 != null'>
+    <tr *ngFor='let p of ostalo4'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>5. semestar</b></h6>
+<table *ngIf='ostalo5 != null'>
+    <tr *ngFor='let p of ostalo5'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>6. semestar</b></h6>
+<table *ngIf='ostalo6 != null'>
+    <tr *ngFor='let p of ostalo6'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>7. semestar</b></h6>
+<table *ngIf='ostalo7 != null'>
+    <tr *ngFor='let p of ostalo7'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>
+<br>
+<h6><b>8. semestar</b></h6>
+<table *ngIf='ostalo8 != null'>
+    <tr *ngFor='let p of ostalo8'>
+        <td>{{ p.ime }}</td><td> ({{p.sifra}}) </td>
+        <td *ngIf='dozvoljeno(p)'>
+            <button (click)="predmetDetalji(p)">Detalji</button>
+        </td>
+    </tr>
+</table>

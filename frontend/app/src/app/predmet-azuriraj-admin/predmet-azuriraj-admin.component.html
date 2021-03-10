@@ -1,0 +1,101 @@
+<div class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+</div>
+<br>
+<h5><b>Izabrani predmet: </b></h5>
+<form>
+    <table>
+        <tr>
+            <td>Ime:</td>
+            <td>
+                <input type='text' name='ime' [(ngModel)]='ime'>
+            </td>
+        </tr>
+        <tr>
+            <td>Tip:</td>
+            <td>
+                <select name='tip' [(ngModel)]='tip'>
+                    <option value='obavezan'>obavezan</option>
+                    <option value='izborni'>izborni</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Semestar:</td>
+            <td>
+                <input type='number' name='semestar' [(ngModel)]='semestar'>
+            </td>
+        </tr>
+        <tr>
+            <td>Odsek:</td>
+            <td>
+                <input type='text' name='odsek' [(ngModel)]='odsek'>
+            </td>
+        </tr>
+        <tr>
+            <td>Šifra:</td>
+            <td>
+                <input type='text' name='sifra' [(ngModel)]='sifra'>
+            </td>
+        </tr>
+        <tr>
+            <td>Fond predavanja:</td>
+            <td>
+                <input type='number' name='fondPredavanja' [(ngModel)]='fondPredavanja'>
+            </td>
+        </tr>
+        <tr>
+            <td>Fond vežbi:</td>
+            <td>
+                <input type='text' name='fondVezbe' [(ngModel)]='fondVezbe'>
+            </td>
+        </tr>
+        <tr>
+            <td>ESPB:</td>
+            <td>
+                <input type='number' name='espb' [(ngModel)]='espb'>
+            </td>
+        </tr>
+        <tr>
+            <td>Cilj:</td>
+            <td>
+                <textarea name='cilj' rows="3" cols="30" [(ngModel)]='cilj'></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Termin predavanja:</td>
+            <td>
+                <input type='text' name='terminPredavanja' [(ngModel)]='terminPredavanja'>
+            </td>
+        </tr>
+        <tr>
+            <td>Termin vežbi:</td>
+            <td>
+                <input type='text' name='terminVezbe' [(ngModel)]='terminVezbe'>
+            </td>
+        </tr>
+        <tr>
+            <td>Polaganje:</td>
+            <td>
+                <input type='text' name='polaganje' [(ngModel)]='polaganje'>
+            </td>
+        </tr>
+        <tr>
+            <td>Komentar:</td>
+            <td>
+                <input type='text' name='komentar' [(ngModel)]='komentar'>
+            </td>
+        </tr>
+        <tr>
+            <td>Broj grupa:</td>
+            <td>
+                <input type='number' name='brojGrupa' [(ngModel)]='brojGrupa'>
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2'>
+               <button (click)='azurirajPredmet()'>Azuriraj</button>
+            </td>
+        </tr>
+    </table>
+</form>

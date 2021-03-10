@@ -1,0 +1,162 @@
+<div class="row">
+    <div class="col-sm-1">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+            <a class="nav-link" routerLink="/zaposleniMeni">Profil</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active">Predmeti</a>
+            </li>
+             <li class="nav-item">
+            <a class="nav-link" routerLink="/zaposleniMeniVesti">Vesti</a>
+            </li>
+         </ul>
+    </div>
+    <div class="col-sm-11">
+        <div class="linija">
+            <br>
+            <div class="col-sm-12">
+                <button (click)='odjava()'>Odjava</button>
+            </div>
+            <br>
+            <table>
+                <tr>
+                    <td>Izaberite predmet: </td>
+                    <td>
+                        <select name='predmetIzabranSifra' [(ngModel)]='predmetIzabranSifra' (change)='postaviPredmet()'>
+                            <option *ngFor='let p of predmeti' value='{{ p.sifra }}'>{{ p.ime }}</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>    
+            <br>
+            <ul *ngIf='predmetIzabran != null' class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/zaposleniMeniPredmeti">O predmetu</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/zaposleniMeniPredmetPredavanja">Predavanja</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/zaposleniMeniPredmetVezbe">Vežbe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/zaposleniMeniPredmetIspitna">Ispitna pitanja</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/zaposleniMeniPredmetLaboratorija">Laboratorija</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active">Domaći</a>
+                </li>
+            </ul>
+            <br>
+            <h6 *ngIf='vidljiva == true'><b>Ova stranica je vidljiva</b></h6>
+            <h6 *ngIf='vidljiva == false'><b>Ova stranica NIJE vidljiva</b></h6>
+            <button (click)='promeni()'>Promeni</button>
+            <br>
+            <br>
+            <form>
+                <table cellpadding='5'>
+                    <tr *ngIf='predmetIzabran.domaci.domaciZadaci.length == 0'>
+                        <td>
+                            <h6><b>Nema domaćih zadataka.</b></h6>
+                        </td>
+                    </tr>
+                    <tr *ngFor='let d of predmetIzabran.domaci.domaciZadaci; index as i'>
+                        <td>Informacije o domaćem zadatku: </td>
+                        <td>
+                            <textarea name="informacijeDomaci{{i}}" cols="50" rows="4" [(ngModel)]="informacijeDomaci[i]"></textarea>
+                        </td>
+                        <td>
+                            <table cellpadding='5'>
+                                <tr *ngFor='let p of d.domaciMaterijal'>
+                                    <td><b>{{ p.ime }} {{ p.tip }}</b> {{ p.kb }}KB, </td>
+                                    <td>{{ p.datum }} {{ p.dodao }}</td>
+                                    <td>
+                                        <button (click)="obrisiFajlDomaci(p, d.informacije)" type="button">Obrisi</button>
+                                    </td>
+                                </tr>
+                                <br>
+                                <tr>
+                                    <h6><b>Novi fajl:</b></h6>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="form-group">                    
+                                            <input type="file" name="fajlZaUpload" (change)="promenaFajla($event)" #UploadFileInput>
+                                        </div>
+                                        <button (click)="dodajFajlDomaci(d.informacije)" type="button">Dodaj</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <hr>
+                        </td>
+                        <td>&nbsp;&nbsp;</td>
+                        <td><button (click)='azurirajDomaci(i)'>Azuriraj</button></td>
+                        <td><button (click)='obrisiDomaci(i)'>Obrisi</button></td>
+                        <td><button (click)='otvoriSpisakDomaci(i)'>Otvori spisak</button></td>
+                    </tr>
+                    <br>
+                    <br>
+                    <tr>
+                        <td>
+                            Informacije o novom domaćem:
+                        </td>
+                        <td>
+                            <textarea name="informacijeNoviDomaci" cols="50" rows="4" [(ngModel)]="informacijeNoviDomaci"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button (click)='dodajDomaci()'>Dodaj</button>
+                        </td>  
+                    </tr>
+                    <br>
+                    <br>
+                    <tr>
+                        <h6><b>Spiskovi: </b></h6>
+                    </tr>
+                    <tr *ngFor='let s of spiskovi'>
+                        <table cellpadding="1">
+                            <tr>
+                                <td>Naziv: </td>
+                                <td>{{ s.naziv }}</td>
+                            </tr>
+                            <tr>
+                                <td>Termin: </td>
+                                <td>{{ s.termin }}</td>
+                            </tr>
+                            <tr>
+                                <td>Mesto: </td>
+                                <td>{{ s.mesto }}</td>
+                            </tr>
+                            <tr>
+                                <td>Otvoreno do: </td>
+                                <td *ngIf='otvoren(s) == true'>{{ s.datum }}</td>
+                                <td *ngIf='otvoren(s) == false'>Zatvoreno</td>
+                            </tr>
+                            <tr>
+                                <td>Prijavljeno / Dozvoljeno:</td>
+                                <td *ngIf='s.limit == 1000'>{{ s.studenti.length }} / Max</td>
+                                <td *ngIf='s.limit < 1000'>{{ s.studenti.length }} / {{ s.limit }}</td>
+                            </tr>
+                            <tr>
+                                <td *ngIf='otvoren(s) == true'>
+                                    <button (click)='zatvoriSpisak(s)'>Zatvori</button>
+                                </td>
+                                <td>
+                                    <button (click)='obrisiSpisak(s)'>Obrisi</button>
+                                </td>
+                                <td>
+                                    <button (click)='spisakDetalji(s)'>Prijave</button>
+                                </td>
+                            </tr>
+                        </table>
+                        <br>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

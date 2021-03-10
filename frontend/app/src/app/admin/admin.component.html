@@ -1,0 +1,416 @@
+<div class="row">
+    <div class="col-sm-12">
+        <button (click)='odjava()'>Odjava</button>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-4">
+        <h5><b>Novi zaposleni: </b></h5>
+        <form>
+            <table>
+                <tr>
+                    <td>Korisničko ime:</td>
+                    <td>
+                        <input type='text' name='korime' [(ngModel)]='korime'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lozinka:</td>
+                    <td>
+                        <input type='password' name='lozinka' [(ngModel)]='lozinka'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ime:</td>
+                    <td>
+                        <input type='text' name='ime' [(ngModel)]='ime'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Prezime:</td>
+                    <td>
+                        <input type='text' name='prezime' [(ngModel)]='prezime'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Adresa:</td>
+                    <td>
+                        <input type='text' name='adresa' [(ngModel)]='adresa'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Telefon:</td>
+                    <td>
+                        <input type='text' name='telefon' [(ngModel)]='telefon'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sajt:</td>
+                    <td>
+                        <input type='text' name='sajt' [(ngModel)]='sajt'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Biografija:</td>
+                    <td>
+                        <textarea name='biografija' rows="3" cols="30" [(ngModel)]='biografija'></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zvanje:</td>
+                    <td>
+                        <select name='zvanje' [(ngModel)]='zvanje'>
+                            <option value='redovni profesor'>redovni profesor</option>
+                            <option value='vanredni profesor'>vanredni profesor</option>
+                            <option value='docent'>docent</option>
+                            <option value='asistent'>asistent</option>
+                            <option value='saradnik u nastavi'>saradnik u nastavi</option>
+                            <option value='istraživač'>istraživač</option>
+                            <option value='laboratorijski inženjer'>laboratorijski inženjer</option>
+                            <option value='laboratorijski tehničar'>laboratorijski tehničar</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Broj kabineta:</td>
+                    <td>
+                        <input type='number' name='brojKabineta' [(ngModel)]='brojKabineta'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td>
+                        <select name='status' [(ngModel)]='status'>
+                            <option value='aktivan'>aktivan</option>
+                            <option value='neaktivan'>neaktivan</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan='2'>
+                       <button (click)='registracijaZaposleni()'>Registracija</button>
+                    </td>
+                </tr>
+            </table>
+            <div style="color:red" *ngFor="let g of greska">
+              {{ g }} <br/>
+          </div>
+        </form>
+    </div>
+    <div class="col-sm-3">
+        <h5><b>Novi student: </b></h5>
+        <app-registerstudent></app-registerstudent>
+    </div>
+    <div class="col-sm-5">
+        <h5><b>Korisnici: </b></h5>
+        <table>
+            <tr *ngFor='let k of korisnici'>
+                <td>{{ k.korime }}</td>
+                <td><button (click)='azuriraj(k)'>Azuriraj</button></td>
+                <td><button (click)='obrisi(k)'>Obrisi</button></td>
+                <td *ngIf='k.tip == "zaposleni"'><button (click)='promeniSliku(k)'>Promeni sliku</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <br>
+        <h5><b>Novi predmet: </b></h5>
+        <form>
+            <table>
+                <tr>
+                    <td>Ime:</td>
+                    <td>
+                        <input type='text' name='imePredmeta' [(ngModel)]='imePredmeta'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tip:</td>
+                    <td>
+                        <select name='tip' [(ngModel)]='tip'>
+                            <option value='obavezan'>obavezan</option>
+                            <option value='izborni'>izborni</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Semestar:</td>
+                    <td>
+                        <input type='number' name='semestar' [(ngModel)]='semestar'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Odsek:</td>
+                    <td>
+                        <input type='text' name='odsek' [(ngModel)]='odsek'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Šifra:</td>
+                    <td>
+                        <input type='text' name='sifra' [(ngModel)]='sifra'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fond predavanja:</td>
+                    <td>
+                        <input type='number' name='fondPredavanja' [(ngModel)]='fondPredavanja'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fond vežbi:</td>
+                    <td>
+                        <input type='text' name='fondVezbe' [(ngModel)]='fondVezbe'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ESPB:</td>
+                    <td>
+                        <input type='number' name='espb' [(ngModel)]='espb'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cilj:</td>
+                    <td>
+                        <textarea name='cilj' rows="3" cols="30" [(ngModel)]='cilj'></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Termin predavanja:</td>
+                    <td>
+                        <input type='text' name='terminPredavanja' [(ngModel)]='terminPredavanja'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Termin vežbi:</td>
+                    <td>
+                        <input type='text' name='terminVezbe' [(ngModel)]='terminVezbe'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Polaganje:</td>
+                    <td>
+                        <input type='text' name='polaganje' [(ngModel)]='polaganje'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Komentar:</td>
+                    <td>
+                        <input type='text' name='komentar' [(ngModel)]='komentar'>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Broj grupa:</td>
+                    <td>
+                        <input type='number' name='brojGrupa' [(ngModel)]='brojGrupa'>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan='2'>
+                       <button (click)='unosPredmeta()'>Unesi</button>
+                    </td>
+                </tr>
+            </table>
+            <div style="color:red" *ngFor="let g of greska">
+              {{ g }} <br/>
+          </div>
+        </form>
+    </div>
+    <div class="col-sm-4">
+        <h5><b>Predmeti: </b></h5>
+        <table>
+            <tr *ngFor='let p of predmeti'>
+                <td>{{ p.ime }} ({{ p.sifra }})</td>
+                <td><button (click)='azurirajPredmet(p)'>Azuriraj</button></td>
+                <td><button (click)='obrisiPredmet(p)'>Obrisi</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4">
+        <br>
+        <h5><b>Angažuj zaposlenog: </b></h5>
+        <table>
+            <tr>
+                <td>Zaposleni: </td>
+                <td>
+                    <select name='zaposleniAngazovanKorime' [(ngModel)]='zaposleniAngazovanKorime'>
+                        <option *ngFor='let p of profesori' value='{{ p.korime }}'>{{ p.ime }} {{ p.prezime }}, {{ p.zvanje }}</option>
+                        <option *ngFor='let v of vanredni' value='{{ v.korime }}'>{{ v.ime }} {{ v.prezime }}, {{ v.zvanje }}</option>
+                        <option *ngFor='let d of docenti' value='{{ d.korime }}'>{{ d.ime }} {{ d.prezime }}, {{ d.zvanje }}</option>
+                        <option *ngFor='let a of asistenti' value='{{ a.korime }}'>{{ a.ime }} {{ a.prezime }}, {{ a.zvanje }}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Predmet: </td>
+                <td>
+                    <select name='predmetAngazovanSifra' [(ngModel)]='predmetAngazovanSifra' (change)='postaviPredmet()'>
+                        <option *ngFor='let p of predmeti' value='{{ p.sifra }}'>{{ p.ime }}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr *ngIf='predmetAngazovan != null'>
+                <td>Grupa: </td>
+                <td>
+                    <select name='grupaAngazovan' [(ngModel)]='grupaAngazovan'>
+                        <option *ngFor='let item of [].constructor(predmetAngazovan.brojGrupa); let i = index' value='P{{ i + 1}}'>P{{ i + 1 }}</option>
+                        <option *ngFor='let item of [].constructor(predmetAngazovan.brojGrupa); let i = index' value='V{{ i + 1}}'>V{{ i + 1 }}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2'>
+                   <button (click)='angazujZaposlenog()'>Angažuj</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-sm-4">
+        <h5><b>Plan angažovanja: </b></h5>
+        <table>
+            <tr *ngFor='let a of angazovani'>
+                <td>{{ a.korime }} - {{ a.sifra }} - {{ a.grupa }}</td>
+                <td><button (click)='obrisiAngazman(a)'>Obrisi</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-4">
+        <br>
+        <h5><b>Dodaj studenta na predmet: </b></h5>
+        <table>
+            <tr>
+                <td>Studenti: </td>
+                <td>
+                    <select name='studentPrati' [(ngModel)]='studentPrati'>
+                        <option *ngFor='let s of studenti' value='{{ s.korime }}'>{{ s.korime }}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Predmet: </td>
+                <td>
+                    <select name='predmetPrati' [(ngModel)]='predmetPrati'>
+                        <option *ngFor='let p of predmeti' value='{{ p.sifra }}'>{{ p.ime }}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2'>
+                   <button (click)='dodajPrati()'>Dodaj</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-sm-4">
+        <h5><b>Prati predmet: </b></h5>
+        <table>
+            <tr *ngFor='let p of prate'>
+                <td>{{ p.korime }} - {{ p.sifra }}</td>
+                <td><button (click)='obrisiPrati(p)'>Obrisi</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-4">
+        <br>
+        <h5><b>Obaveštenja: </b></h5>
+        <table>
+            <tr *ngFor='let k of kategorije; index as i'>
+                <td>
+                    <br>
+                    <b>Kategorija: {{ k.ime }}</b>
+                    &nbsp;
+                    <button (click)='obrisiKategoriju(k)'>Obrisi</button>
+                    <br>
+                    <br>
+                    <div *ngFor='let o of k.obavestenja'>
+                        &nbsp;&nbsp;{{ o.naslov }}, {{ o.datum }}
+                        &nbsp;
+                        <button (click)='obrisiObavestenje(o, k.ime)'>Obrisi</button>
+                    </div>
+                    <br>
+                    <br>
+                    Dodaj novo obaveštenje:
+                    <table>
+                        <tr>
+                            <td>
+                                Naslov:
+                            </td>
+                            <td>
+                                <input type='text' name='novoObavestenjeNaslov{{i}}' [(ngModel)]='novoObavestenjeNaslov[i]'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Sadržaj:
+                            </td>
+                            <td>
+                                <textarea name='novoObavestenjeSadrzaj{{i}}' cols="40" rows="4" [(ngModel)]='novoObavestenjeSadrzaj[i]'></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                           <td>
+                                <button (click)='dodajObavestenje(k, i)'>Dodaj</button>
+                           </td> 
+                        </tr>
+                    </table>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br>
+                    Dodaj novu kategoriju:
+                    <input type='text' name='novaKategorija' [(ngModel)]='novaKategorija'>
+                    &nbsp;
+                    <button (click)='dodajKategoriju()'>Dodaj</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-sm-8">
+
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-4">
+        <br>
+        <h5><b>Dodaj mapiranje: </b></h5>
+        <table>
+            <tr>
+                <td>Mapiraj na: </td>
+                <td>
+                    <select name='mapirajNa' [(ngModel)]='mapirajNa'>
+                        <option *ngFor='let p of predmeti' value='{{ p.sifra }}'>{{ p.ime }} ({{ p.odsek }})</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Predmet za mapiranje: </td>
+                <td>
+                    <select name='predmetZaMapiranje' [(ngModel)]='predmetZaMapiranje'>
+                        <option *ngFor='let p of predmeti' value='{{ p.sifra }}'>{{ p.ime }} ({{ p.odsek }})</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan='2'>
+                   <button (click)='dodajMapiranje()'>Dodaj</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+

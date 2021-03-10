@@ -1,0 +1,29 @@
+<div class="col-sm-12">
+    <button (click)='odjava()'>Odjava</button>
+</div>
+<br>
+
+<form>
+    <table>
+        <tr>
+            <td>Stara lozinka:</td>
+            <td>
+                <input type='password' name='stara' [(ngModel)]='stara'>
+            </td>
+        </tr>
+        <tr>
+            <td>Nova lozinka:</td>
+            <td>
+                <input type='password' name='nova' [(ngModel)]='nova'>
+            </td>
+        </tr>
+        <tr>
+            <td colspan='2'>
+               <button (click)='promeni()'>Promeni</button>
+            </td>
+        </tr>
+    </table>
+    <div style="color:red" *ngFor="let g of greska">
+      {{ g }} <br/>
+  </div>
+</form>
